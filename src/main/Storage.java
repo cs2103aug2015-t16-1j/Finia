@@ -29,9 +29,8 @@ import com.google.gson.JsonSyntaxException;
 * Should the reading of the savefile fail, due to corruption or missing file,
 * Storage.java tries to read the backup and tries to restore the data
 */
-public class Storage {
-    private static final Logger logger = Logger.getLogger("FiniStorage");
 
+public class Storage {
     private static final String DEFAULT_SAVE_FILE = "savefile.txt";
     private static final String SETTINGS_FILE_NAME = "settings.txt";
     private static final String BACKUP_FILE_NAME = "backup.txt";
@@ -49,7 +48,6 @@ public class Storage {
     // get instance of Storage
     // ================================================================
     public static Storage getInstance() {
-        logger.setLevel(Level.OFF);
         if (storage == null || !settingsFile.exists()) {
             storage = new Storage();
         }
@@ -70,7 +68,6 @@ public class Storage {
         backupFile = new File(BACKUP_FILE_NAME);
         createIfMissingFile(backupFile);
         backupFile.setWritable(false);
-        logger.log(Level.INFO, "Storage Initialised");
     }
 
     // ================================================================
@@ -110,8 +107,6 @@ public class Storage {
         try {
             if (!fileName.exists()) {
                 fileName.createNewFile();
-                logger.log(Level.INFO, fileName.toString()
-                        + " have been created");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -171,10 +166,8 @@ public class Storage {
             storage = readSavedTasks(backupFile);
             if (storage == null || storage.isEmpty()) {
                 storage = new ArrayList<Task>();
-                logger.log(Level.INFO, "File corrupted, backup failed");
             } else if (!storage.isEmpty()) {
-                logger.log(Level.INFO,
-                        "File corrupted, restored data from backup file");
+            	// Logger
             }
         }
         return storage;
@@ -235,8 +228,6 @@ public class Storage {
             updateSettingsFile(saveFileName);
             saveFile = new File(saveFileName);
             createIfMissingFile(saveFile);
-            logger.log(Level.INFO,
-                    "File directory changed to " + saveFile.toString());
             return true;
         } else {
             return false;

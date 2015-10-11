@@ -59,7 +59,6 @@ public class DisplayController extends VBox {
     @FXML
     private ListView<HelpBox> helpOverlayContents;
 
-    private static Logger logger;
     private static DisplayController displayController;
 
     private Timeline feedbackTimeline;
@@ -78,8 +77,6 @@ public class DisplayController extends VBox {
     // Constructor
     // ================================================================
     private DisplayController() {
-        logger = Logger.getLogger("Display");
-        logger.setLevel(Level.OFF);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Display.fxml"));
         loader.setRoot(this);
@@ -128,7 +125,6 @@ public class DisplayController extends VBox {
         handleOverlays(tasks);
 
         ArrayList<Task> listOfTasks = trimListOfTasks(tasks);
-        logger.log(Level.INFO, "List of tasks: " + listOfTasks.toString());
 
         ObservableList<HBox> displayBoxes = FXCollections.observableArrayList();
 
@@ -156,7 +152,6 @@ public class DisplayController extends VBox {
         hideOverlays();
 
         ArrayList<Task> listOfResults = trimListOfTasks(searchResults);
-        logger.log(Level.INFO, "List of results: " + listOfResults.toString());
 
         ObservableList<HBox> displayBoxes = FXCollections.observableArrayList();
 
@@ -193,7 +188,6 @@ public class DisplayController extends VBox {
     }
 
     public void scrollDown() {
-        logger.log(Level.INFO, "Current scroll index: " + currentScrollIndex);
         if (currentScrollIndex == 0 &&
             taskView.getItems().size() < 14) {
             currentScrollIndex = 0;
@@ -205,7 +199,6 @@ public class DisplayController extends VBox {
     }
 
     public void scrollUp() {
-        logger.log(Level.INFO, "Current scroll index: " + currentScrollIndex);
         if (currentScrollIndex > 0) {
             currentScrollIndex -= 5;
             taskView.scrollTo(currentScrollIndex);

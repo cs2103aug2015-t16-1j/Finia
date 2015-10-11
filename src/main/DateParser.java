@@ -50,7 +50,6 @@ public class DateParser {
     // ================================================================
     // Variables
     // ================================================================
-    private static Logger logger;
     private static DateParser dateParser;
 
     private Parser parser;
@@ -64,8 +63,7 @@ public class DateParser {
     // Constructor
     // ================================================================
     private DateParser() {
-        logger = Logger.getLogger("DateParser");
-        logger.setLevel(Level.OFF);
+    	// Logger
     }
 
 
@@ -133,7 +131,6 @@ public class DateParser {
     private String modifyInputBeforeParsing(String input) {
         input = fixTimeFormatting(input);
         input = hideWordsNotToBeParsed(input);
-        logger.log(Level.INFO, "Input before parsing: " + input);
         return input;
     }
 
@@ -240,9 +237,6 @@ public class DateParser {
                         int position = getActualIndexOfWord(input,
                                                             parsePosition,
                                                             parsedWord);
-                        logger.log(Level.INFO, "Word partially parsed: " +
-                                               parsedWord + ", position: " +
-                                               position);
                         input = escapeWordAtPosition(input, position);
                     }
                 }
@@ -292,9 +286,6 @@ public class DateParser {
         if (parsedLocations.containsKey(offendingKey)) {
             for (ParseLocation parsedWord : parsedLocations.get(offendingKey)) {
                 if (parsedWord.getText().length() < 3) {
-                    logger.log(Level.INFO, "Caught time false match: " +
-                                           parsedWord + ", position: " +
-                                           parsedWord.getStart());
                     input = escapeWordAtPosition(input, parsedWord.getStart());
                 }
             }
@@ -317,8 +308,6 @@ public class DateParser {
         String offendingKey = "spelled_or_int_optional_prefix";
         if (parsedLocations.containsKey(offendingKey)) {
             for (ParseLocation parsedWord : parsedLocations.get(offendingKey)) {
-                logger.log(Level.INFO, "Caught option prefix: " + parsedWord +
-                                       ", position: " + parsedWord.getStart());
                 input = escapeWordAtPosition(input, parsedWord.getStart());
             }
         }
@@ -405,8 +394,6 @@ public class DateParser {
         parsedWords = StringUtils.join(parsedWordsArr, STRING_ONE_SPACING);
         notParsedWords = StringUtils.join(notParsedWordsArr, STRING_ONE_SPACING);
 
-        logger.log(Level.INFO, "Parsed words: " + parsedWords);
-        logger.log(Level.INFO, "Not parsed words: " + notParsedWords);
     }
 
     private void generateDates(DateGroup group) {
@@ -414,7 +401,6 @@ public class DateParser {
         addNormalDates(listOfDates);
         addRecurringUntilDate(group);
 
-        logger.log(Level.INFO, "Generated dates: " + dates);
     }
 
     private void addRecurringUntilDate(DateGroup group) {
@@ -462,8 +448,6 @@ public class DateParser {
             }
         }
 
-        logger.log(Level.INFO, "After removing non chronological dates: " +
-                               dates);
     }
 
 

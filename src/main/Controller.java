@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 public class Controller {
     private Stage stage;
     private static Controller controller;
-    private static Logger logger;
     private Storage storage;
     private History previousStates;
     private DateParser parser;
@@ -30,9 +29,6 @@ public class Controller {
     private boolean switchDisplayToSearch = false;
     
     private Controller() {
-        logger = Logger.getLogger("Controller");
-        logger.setLevel(Level.OFF);
-
         parser = DateParser.getInstance();
         storage = Storage.getInstance();
         taskCreator = CreateTask.getInstance();
@@ -70,10 +66,6 @@ public class Controller {
         String arguments = currentCommand.getArguments();
         String feedback = "";
         boolean helpUser = false;
-
-        logger.log(Level.INFO, "User's input: " + input);
-        logger.log(Level.INFO, "Type of command: " + commandType.toString());
-        logger.log(Level.INFO, "Arguments: " + arguments);
 
         switch (commandType) {
         	
@@ -239,7 +231,6 @@ public class Controller {
         if (input.toLowerCase().contains("all")) {
             input = input.replace("all", "").trim();
             editAll = true;
-            logger.log(Level.INFO, "Contains 'all' in edit");
         }
 
         try {
@@ -312,7 +303,6 @@ public class Controller {
         displayedTasks.remove(taskToDelete);
         allTasks.remove(taskToDelete);
         updateStorageWithAllTasks();
-        logger.log(Level.INFO, "displayedTasks after individual deletion: " + displayedTasks);
     }
 
     private void deleteAllTasks(Task taskToDelete) {
@@ -327,7 +317,6 @@ public class Controller {
         displayedTasks.removeAll(tasksToDelete);
         allTasks.removeAll(tasksToDelete);
         updateStorageWithAllTasks();
-        logger.log(Level.INFO, "displayedTasks after all deletion: " + displayedTasks);
     }
 
     private String completeTask(String input) {
@@ -340,12 +329,10 @@ public class Controller {
             }
             
             task.markAsCompleted();
-            logger.log(Level.INFO, "the completed task: " + task.toString());
 
             updateStorageWithAllTasks();
             checkPreviousDisplay();
 
-            logger.log(Level.INFO, "completed tasks after complete: " + getCompletedTasks(allTasks));
             return String.format("\"%s\" completed.", task.getDescription());
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
             return "The task you specified could not be found.";
@@ -357,12 +344,10 @@ public class Controller {
             int index = Integer.parseInt(input.trim()) - 1;
             Task task = displayedTasks.get(index);
             task.markAsIncomplete();
-            logger.log(Level.INFO, "the incompleted task: " + task.toString());
 
             updateStorageWithAllTasks();
             checkPreviousDisplay();
             
-            logger.log(Level.INFO, "incomplete tasks after incomplete: " + getIncompleteTasks(allTasks));
             return String.format("\"%s\" marked as incomplete.", task.getDescription());
         } catch (NumberFormatException | IndexOutOfBoundsException e) {
             return "The task you specified could not be found.";
@@ -482,13 +467,11 @@ public class Controller {
     private void updateDisplayWithDefault() {
         displayedTasks.setAll(getIncompleteTasks(allTasks));
         displayController.updateOverviewDisplay(displayedTasks);
-        logger.log(Level.INFO, "Displayed tasks: " + displayedTasks);
     }
 
     private void updateDisplayWithCompleted() {
         displayedTasks.setAll(getCompletedTasks(allTasks));
         displayController.updateSearchDisplay(displayedTasks, "completed");
-        logger.log(Level.INFO, "Displayed tasks: " + displayedTasks);
     }
     
     // Call the display object to show the "search" display
