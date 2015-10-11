@@ -7,9 +7,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fontSmoothingType="LCD" layoutX="69.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to">
+      <Text fontSmoothingType="LCD" layoutX="49.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to">
          <font>
             <Font name="Helvetica Neue Light" size="55.0" />
          </font>

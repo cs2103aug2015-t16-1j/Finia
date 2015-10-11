@@ -112,7 +112,8 @@ public class TaskBox extends HBox {
     // ================================================================
     private void loadFxml() {
         try {
-            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(LOCATION_TASK_BOX_FXML));
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/TaskBox.fxml"));
+            loader.setRoot(null);
             loader.setRoot(this);
             loader.setController(this);
             loader.load();
