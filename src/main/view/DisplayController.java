@@ -88,7 +88,7 @@ public class DisplayController extends VBox {
 
         initTimelines();
         initExampleCommands();
-//        initfolderView();
+        initfolderView();
         initHelpList();
     }
 
@@ -285,12 +285,12 @@ public class DisplayController extends VBox {
         helpList.add(new HelpBox("Exit Veto", "exit"));
     }
     
-//    private void initfolderView() {
-//    	folderView = FXCollections.observableArrayList();
-//    	folderView.add(new Folder("All", 0));
-//    	folderView.add(new Folder("Today", 1));
-//    	folderView.add(new Folder("Next seven days", 2));
-//    }
+    private void initfolderView() {
+    	folderView = FXCollections.observableArrayList();
+    	folderView.add(new Folder("All", 0));
+    	folderView.add(new Folder("Today", 1));
+    	folderView.add(new Folder("Next seven days", 2));
+    }
 
     private void initNoTaskOverlay(String exampleCommands) {
         noTaskOverlay.setOpacity(0);

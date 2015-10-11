@@ -19,7 +19,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>main.java.MainApp</mainClass>
+							<mainClass>main.MainApp</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
