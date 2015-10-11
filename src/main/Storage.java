@@ -14,34 +14,22 @@ import java.util.logging.Logger;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-/**
-* This class creates the necessary files needed to save the data
-*       - creates a settings file where the location of the savefile is stored
-*       - creates a savefile where the data is saved
-*       - creates a backup where the data is also saved
-* 
-* This class is able to handle the following function
-*       - writing of data from savefile
-*       - reading of data from savefile
-*       - setting another file as save file
-*       - moving savefile to another directory
-* 
-* Should the reading of the savefile fail, due to corruption or missing file,
-* Storage.java tries to read the backup and tries to restore the data
-*/
-
 public class Storage {
     private static final String DEFAULT_SAVE_FILE = "savefile.txt";
     private static final String SETTINGS_FILE_NAME = "settings.txt";
     private static final String BACKUP_FILE_NAME = "backup.txt";
 
+    private String saveFileName;
+    
     private static Storage storage;
+    
     private static File settingsFile;
     private File saveFile;
     private File backupFile;
-    private String saveFileName;
+    
     private BufferedReader reader;
     private PrintWriter writer;
+    
     private Gson gson;
 
     // ================================================================

@@ -1,4 +1,4 @@
-package main.view;
+package main.resources.view;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -26,7 +26,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import main.Task;
+import main.java.Task;
 
 public class DisplayController extends VBox {
     // ================================================================
@@ -51,12 +51,15 @@ public class DisplayController extends VBox {
     @FXML
     private Label helpOverlayTitle;
     @FXML
-    private ListView<HBox> folderView;
+    private HBox allFolder;
     @FXML
-    private ListView<Group> groupView; 
+    private HBox todayFolder;
+    @FXML
+    private HBox nextSevenDaysFolder;
     @FXML
     private ListView<HelpBox> helpOverlayContents;
 
+    private static Logger logger;
     private static DisplayController displayController;
 
     private Timeline feedbackTimeline;
@@ -75,6 +78,8 @@ public class DisplayController extends VBox {
     // Constructor
     // ================================================================
     private DisplayController() {
+        logger = Logger.getLogger("Display");
+        logger.setLevel(Level.OFF);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Display.fxml"));
         loader.setRoot(this);
@@ -88,8 +93,8 @@ public class DisplayController extends VBox {
 
         initTimelines();
         initExampleCommands();
-//        initfolderView();
         initHelpList();
+
     }
 
     
@@ -124,6 +129,7 @@ public class DisplayController extends VBox {
         handleOverlays(tasks);
 
         ArrayList<Task> listOfTasks = trimListOfTasks(tasks);
+        logger.log(Level.INFO, "List of tasks: " + listOfTasks.toString());
 
         ObservableList<HBox> displayBoxes = FXCollections.observableArrayList();
 
@@ -151,6 +157,7 @@ public class DisplayController extends VBox {
         hideOverlays();
 
         ArrayList<Task> listOfResults = trimListOfTasks(searchResults);
+        logger.log(Level.INFO, "List of results: " + listOfResults.toString());
 
         ObservableList<HBox> displayBoxes = FXCollections.observableArrayList();
 
@@ -187,6 +194,7 @@ public class DisplayController extends VBox {
     }
 
     public void scrollDown() {
+        logger.log(Level.INFO, "Current scroll index: " + currentScrollIndex);
         if (currentScrollIndex == 0 &&
             taskView.getItems().size() < 14) {
             currentScrollIndex = 0;
@@ -198,6 +206,7 @@ public class DisplayController extends VBox {
     }
 
     public void scrollUp() {
+        logger.log(Level.INFO, "Current scroll index: " + currentScrollIndex);
         if (currentScrollIndex > 0) {
             currentScrollIndex -= 5;
             taskView.scrollTo(currentScrollIndex);
@@ -284,13 +293,6 @@ public class DisplayController extends VBox {
                                  "display completed"));
         helpList.add(new HelpBox("Exit Veto", "exit"));
     }
-    
-//    private void initfolderView() {
-//    	ObservableList<HBox> folderList = FXCollections.observableArrayList();
-//    	Folder newFolder = new Folder("All", 0);
-//    	folderList.add(newFolder);
-//    	folderView.setItems(folderList);
-//    }
 
     private void initNoTaskOverlay(String exampleCommands) {
         noTaskOverlay.setOpacity(0);
