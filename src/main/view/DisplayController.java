@@ -51,11 +51,9 @@ public class DisplayController extends VBox {
     @FXML
     private Label helpOverlayTitle;
     @FXML
-    private HBox allFolder;
+    private ListView<Folder> folderView;
     @FXML
-    private HBox todayFolder;
-    @FXML
-    private HBox nextSevenDaysFolder;
+    private ListView<Group> groupView; 
     @FXML
     private ListView<HelpBox> helpOverlayContents;
 
@@ -90,6 +88,7 @@ public class DisplayController extends VBox {
 
         initTimelines();
         initExampleCommands();
+//        initfolderView();
         initHelpList();
     }
 
@@ -285,6 +284,13 @@ public class DisplayController extends VBox {
                                  "display completed"));
         helpList.add(new HelpBox("Exit Veto", "exit"));
     }
+    
+//    private void initfolderView() {
+//    	folderView = FXCollections.observableArrayList();
+//    	folderView.add(new Folder("All", 0));
+//    	folderView.add(new Folder("Today", 1));
+//    	folderView.add(new Folder("Next seven days", 2));
+//    }
 
     private void initNoTaskOverlay(String exampleCommands) {
         noTaskOverlay.setOpacity(0);

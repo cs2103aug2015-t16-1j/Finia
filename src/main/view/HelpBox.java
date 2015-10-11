@@ -14,7 +14,6 @@ public class HelpBox extends HBox {
     private Label command;
 
     public HelpBox(String description, String command) {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(
             		"/view/HelpBox.fxml"));
