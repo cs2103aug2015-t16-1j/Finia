@@ -25,7 +25,7 @@ public class MainApp extends Application {
 
     private void initPrimaryStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
-//		this.primaryStage.getIcons().add(new Image("/images/icon.png")); 
+//		this.primaryStage.getIcons().add(new Image("resource/image/icon.png")); 
 		this.primaryStage.setTitle("Fini");
 		this.primaryStage.setMinWidth(600);
 		this.primaryStage.setMinHeight(600);
