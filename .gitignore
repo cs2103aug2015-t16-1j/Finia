@@ -5,3 +5,4 @@ main.java.Veto.iml
 target/
 *.iml
 out/
+*.log
