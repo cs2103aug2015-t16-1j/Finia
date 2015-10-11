@@ -7,27 +7,32 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainApp">
    <children>
-      <Text fontSmoothingType="LCD" layoutX="81.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to">
+      <Text fontSmoothingType="LCD" layoutX="65.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to">
          <font>
-            <Font name="Helvetica Neue Light" size="55.0" />
+            <Font name="Raleway Light" size="55.0" />
          </font>
       </Text>
       <Text layoutX="195.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Getting things done...fast">
          <font>
-            <Font name="Helvetica Neue Thin Italic" size="20.0" />
+            <Font name="Raleway Light" size="18.0" />
          </font>
       </Text>
-      <ImageView fitHeight="79.0" fitWidth="76.0" layoutX="379.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="79.0" fitWidth="76.0" layoutX="372.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@check.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="81.0" fitWidth="156.0" layoutX="371.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="81.0" fitWidth="156.0" layoutX="386.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icon.png" />
          </image>
       </ImageView>
+      <Text fontSmoothingType="LCD" layoutX="201.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please press ENTER to continue">
+         <font>
+            <Font name="Raleway ExtraLight" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
