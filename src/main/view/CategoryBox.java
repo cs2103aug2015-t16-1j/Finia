@@ -4,12 +4,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import main.MainApp;
 
 //@author A0121520A
 public class CategoryBox extends HBox {
 
     private static final String STYLE_DIM = "-fx-text-fill: #E8E8E8;";
-    private static final String LOCATION_CATEGORY_BOX_FXML = "/view/CategoryBox.fxml";
     private static final String FORMAT_DATE = "(%s)";
     private static final String NO_DATE = "";
 
@@ -37,7 +37,7 @@ public class CategoryBox extends HBox {
     
     private void loadFxml() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(LOCATION_CATEGORY_BOX_FXML));
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/CategoryBox.fxml"));
             loader.setRoot(this);
             loader.setController(this);
             loader.load();

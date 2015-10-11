@@ -1,13 +1,13 @@
 package main.view;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -26,6 +26,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import main.MainApp;
 import main.Task;
 
 public class DisplayController extends VBox {
@@ -75,8 +76,7 @@ public class DisplayController extends VBox {
     // Constructor
     // ================================================================
     private DisplayController() {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Display.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/Display.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 

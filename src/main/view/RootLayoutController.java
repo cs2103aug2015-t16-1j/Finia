@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import main.Command;
 import main.Controller;
+import main.MainApp;
 import main.Task;
 
 import java.time.format.DateTimeFormatter;
@@ -48,7 +49,7 @@ public class RootLayoutController extends BorderPane {
     // Constructor
     // ================================================================
     public RootLayoutController(Controller controller) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/RootLayout.fxml"));
+        FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/RootLayout.fxml"));
         loader.setRoot(this);
         loader.setController(this);
 

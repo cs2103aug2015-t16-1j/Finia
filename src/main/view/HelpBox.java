@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import main.MainApp;
 
 public class HelpBox extends HBox {
     @FXML
@@ -15,8 +16,7 @@ public class HelpBox extends HBox {
 
     public HelpBox(String description, String command) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(
-            		"/view/HelpBox.fxml"));
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/HelpBox.fxml"));
             loader.setRoot(this);
             loader.setController(this);
             loader.load();

@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
+import main.MainApp;
 
 public class TaskBox extends HBox {
 
@@ -111,7 +112,7 @@ public class TaskBox extends HBox {
     // ================================================================
     private void loadFxml() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(LOCATION_TASK_BOX_FXML));
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource(LOCATION_TASK_BOX_FXML));
             loader.setRoot(this);
             loader.setController(this);
             loader.load();
