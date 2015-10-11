@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import main.MainApp;
 
 public class Folder extends HBox {
 	@FXML
@@ -14,20 +15,17 @@ public class Folder extends HBox {
 	private Label taskNumber;
 	
 	public Folder(String folderName, int taskNumber) {
-        loadFxml();
-        this.folderIcon.setText("ICON");
-        this.folderName.setText(folderName);
-        this.taskNumber.setText(taskNumber + "");
-    }
-	
-	private void loadFxml() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Folder.fxml"));
+		try {
+            FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("view/Folder.fxml"));
             loader.setRoot(this);
             loader.setController(this);
             loader.load();
         } catch (Exception e) {
             e.printStackTrace();
         }
+		
+		this.folderIcon.setText("ICON");
+		this.folderName.setText(folderName);
+		this.taskNumber.setText(taskNumber + "");
     }
 }
